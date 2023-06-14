@@ -1,0 +1,36 @@
+name: Get SOPS Secret
+description: Get SOPS Secret
+branding:
+  color: gray-dark
+  icon: lock
+inputs:
+  secrets-file:
+    description: 'Path to the encrypted file that contains the secret.'
+    required: true
+  secret-name:
+    description: 'Name of the secret to decrypt.'
+    required: true
+  age-key:
+    description: 'Private AGE key to decrypt the secret.'
+    required: true
+  sops-version:
+    description: 'The version of SOPS to use.'
+    required: true
+    default: 'latest'
+outputs:
+  secret:
+    description: 'The decrypted secret.'
+    value: ${{ steps.decrypt.outputs.secret }}
+runs:
+  using: composite
+  steps:
+    - name: Setup SOPS
+      uses: nhedger/setup-sops@v1
+    - name: Setup environment
+      run: echo "SOPS_AGE_KEY=${{ inputs.age-key }}" >> $GITHUB_ENV
+      shell: bash
+    - id: decrypt
+      name: Decrypt secret
+      shell: bash
+      run: sops exec-env "${{ inputs.secrets-file }}" 'echo secret=$${{ inputs.secret-name }} >> $GITHUB_OUTPUT'
+

@@ -1,0 +1,10 @@
+creation_rules:
+  - type: encrypted_file
+    encryption_method: age
+    key_groups:
+      - age:
+          # Nicolas Hedger's public key
+          - age1v67y2gknsfnq54wnkmk8hp275gfyddqtyxy8uc4edyawdvxw35ks2zv9q3
+
+sops:
+  encryption_method: age

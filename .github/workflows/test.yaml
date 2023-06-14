@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Get SOPS Secret
+        id: secret
+        uses: ./
+        with:
+          secrets-file: ./test/secrets.enc.yaml
+          secret-name: hello
+          age-key: ${{ secrets.SOPS_AGE_KEY }}
+      - run: exit 1
+        if: ${{ steps.secret.outputs.secret != 'world' }}
