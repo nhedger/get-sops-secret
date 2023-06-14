@@ -1,5 +1,5 @@
 name: Get SOPS Secret
-description: Get SOPS Secret
+description: Retrieve SOPS-encrypted secrets in GitHub Actions.
 branding:
   color: gray-dark
   icon: lock
