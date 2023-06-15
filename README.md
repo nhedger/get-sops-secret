@@ -17,7 +17,7 @@ The following inputs are supported.
 
     # Path to the SOPS encrypted file that contains the secret.
     # Required.
-    secrets-files: /path/to/secrets.yaml
+    secrets-file: /path/to/secrets.yaml
 
     # Name of the secret to retrieve
     # Required.
@@ -44,7 +44,7 @@ This actions returns single `secret` output with the value of the secret.
   uses: nhedger/get-sops-secret@v1
   id: get-secret
   with:
-    secrets-files: /path/to/secrets.yaml
+    secrets-file: /path/to/secrets.yaml
     secret-name: my-secret
     age-private-key: ${{ secrets.AGE_PRIVATE_KEY }}
 
