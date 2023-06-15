@@ -1,7 +1,7 @@
+# Get SOPS secret in GitHub Actions
+
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/nhedger/get-sops-secret?label=latest&logo=github)](https://github.com/marketplace/actions/get-sops-secret)
 [![Test](https://github.com/nhedger/get-sops-secret/actions/workflows/test.yaml/badge.svg)](https://github.com/nhedger/get-sops-secret/actions/workflows/test.yaml)
-
-# Get SOPS secret in GitHub Actions
 
 This actions provides a straightforward way to get a single secret from a SOPS encrypted file
 and outputs it as a GitHub Actions output.
