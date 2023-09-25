@@ -25,7 +25,7 @@ runs:
   using: composite
   steps:
     - name: Setup SOPS
-      uses: nhedger/setup-sops@v1
+      uses: nhedger/setup-sops@v2
     - name: Setup environment
       run: echo "SOPS_AGE_KEY=${{ inputs.age-key }}" >> $GITHUB_ENV
       shell: bash
